@@ -1,0 +1,14 @@
+D:\Documentos\GitHub\ZaptZupt\Client\ClientZaptZupt\ClientZaptZupt\bin\Release\ClientZaptZupt.exe.config
+D:\Documentos\GitHub\ZaptZupt\Client\ClientZaptZupt\ClientZaptZupt\bin\Release\ClientZaptZupt.exe
+D:\Documentos\GitHub\ZaptZupt\Client\ClientZaptZupt\ClientZaptZupt\bin\Release\ClientZaptZupt.pdb
+D:\Documentos\GitHub\ZaptZupt\Client\ClientZaptZupt\ClientZaptZupt\obj\Release\MainWindow.g.cs
+D:\Documentos\GitHub\ZaptZupt\Client\ClientZaptZupt\ClientZaptZupt\obj\Release\App.g.cs
+D:\Documentos\GitHub\ZaptZupt\Client\ClientZaptZupt\ClientZaptZupt\obj\Release\ClientZaptZupt_MarkupCompile.cache
+D:\Documentos\GitHub\ZaptZupt\Client\ClientZaptZupt\ClientZaptZupt\obj\Release\ClientZaptZupt_MarkupCompile.lref
+D:\Documentos\GitHub\ZaptZupt\Client\ClientZaptZupt\ClientZaptZupt\obj\Release\MainWindow.baml
+D:\Documentos\GitHub\ZaptZupt\Client\ClientZaptZupt\ClientZaptZupt\obj\Release\ClientZaptZupt.g.resources
+D:\Documentos\GitHub\ZaptZupt\Client\ClientZaptZupt\ClientZaptZupt\obj\Release\ClientZaptZupt.Properties.Resources.resources
+D:\Documentos\GitHub\ZaptZupt\Client\ClientZaptZupt\ClientZaptZupt\obj\Release\ClientZaptZupt.csproj.GenerateResource.Cache
+D:\Documentos\GitHub\ZaptZupt\Client\ClientZaptZupt\ClientZaptZupt\obj\Release\ClientZaptZupt.exe
+D:\Documentos\GitHub\ZaptZupt\Client\ClientZaptZupt\ClientZaptZupt\obj\Release\ClientZaptZupt.pdb
+D:\Documentos\GitHub\ZaptZupt\Client\ClientZaptZupt\ClientZaptZupt\obj\Release\ClientZaptZupt.csprojResolveAssemblyReference.cache

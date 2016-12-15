@@ -1,0 +1,22 @@
+﻿<Window x:Class="ClientZaptZupt.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientZaptZupt"
+        mc:Ignorable="d"
+        Title="ZaptZupt" Height="480" Width="640" Background="Black" >
+    <Grid Loaded="Grid_Loaded" >
+        <ListBox x:Name="ltbTalk" FontSize="16" Foreground="White" Background="Black" Margin="30,80,30,80">
+            <ListBoxItem Background ="DarkBlue" Content="Guilherme: Eu acho que você está falando besteira"/>
+            <ListBoxItem Background ="DarkBlue" Content="Guilherme: babaca"/>
+            <ListBoxItem Background ="DarkRed" Content="Igor: Eu não sei se isso aqui vai dar certo..."/>
+            <ListBoxItem Background ="DarkRed" Content="Igor: ok?"/>
+        </ListBox>
+        <Label x:Name="lblFriendName" Foreground="White" FontSize="30" Content="Igor" HorizontalAlignment="Left" Margin="30,20,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtMessageToBeSent" Text="" FontSize="16" Background="Black" Foreground="White" HorizontalAlignment="Left" Height="30" Margin="30,385,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="481"/>
+        <Button x:Name="btnSend" FontSize="14" Content="Send" HorizontalAlignment="Left" Margin="520,385,0,0" VerticalAlignment="Top" Width="75" Height="30"/>
+        <Button x:Name="btnListOfFriends" FontSize="14" Content="Back to the list" HorizontalAlignment="Left" Margin="400,37,0,0" VerticalAlignment="Top" Width="111" Height="30"/>
+        <Button x:Name="btnLogout" FontSize="14" Content="Logout" HorizontalAlignment="Left" Margin="520,37,0,0" VerticalAlignment="Top" Width="76" Height="30"/>
+    </Grid>
+</Window>

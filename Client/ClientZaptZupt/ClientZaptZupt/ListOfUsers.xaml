@@ -1,0 +1,21 @@
+﻿<Window x:Class="ClientZaptZupt.ListOfUsers"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientZaptZupt"
+        mc:Ignorable="d"
+        Title="Users Online" Height="380" Width="431.86" Background="Black">
+    <Grid Margin="0,0,2,0">
+        <ListBox x:Name="ltbTalk" FontSize="16" Foreground="White" Background="Black" Margin="30,50,30,60">
+            <ListBoxItem BorderThickness="3" BorderBrush ="DarkBlue" Content="User1"/>
+            <ListBoxItem BorderThickness="3" BorderBrush ="DarkBlue" Content="User2"/>
+            <ListBoxItem BorderThickness="3" BorderBrush ="DarkBlue" Content="User3"/>
+            <ListBoxItem BorderThickness="3" BorderBrush ="DarkBlue" Content="User4"/>
+        </ListBox>
+        <Label x:Name="lblWelcome" Content="Welcome user! Choose someone to talk!" Foreground="White" FontSize="20" HorizontalAlignment="Left" Margin="30,13,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnStartTalking" Content="Talk!" FontSize="16" HorizontalAlignment="Left" Margin="30,304,0,0" VerticalAlignment="Top" Width="85"/>
+        <Button x:Name="btnLogout" Content="Logout" FontSize="16" HorizontalAlignment="Left" Margin="308,304,0,0" VerticalAlignment="Top" Width="84"/>
+        <Button x:Name="btnChangeNickname" Content="Change Nickname" FontSize="16" HorizontalAlignment="Left" Margin="140,304,0,0" VerticalAlignment="Top" Width="141" RenderTransformOrigin="0.4,0.481"/>
+    </Grid>
+</Window>
