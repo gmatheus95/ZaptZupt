@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerZaptZupt", "ServerZaptZupt\ServerZaptZupt.csproj", "{7598B8E5-BADC-49CC-AA9C-00FBB4751BAE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZaptZuptServer", "ZaptZuptServer\ZaptZuptServer.csproj", "{04F4AE9B-DDC9-42C7-B61F-DF6F558DEC2F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7598B8E5-BADC-49CC-AA9C-00FBB4751BAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7598B8E5-BADC-49CC-AA9C-00FBB4751BAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7598B8E5-BADC-49CC-AA9C-00FBB4751BAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7598B8E5-BADC-49CC-AA9C-00FBB4751BAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04F4AE9B-DDC9-42C7-B61F-DF6F558DEC2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04F4AE9B-DDC9-42C7-B61F-DF6F558DEC2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04F4AE9B-DDC9-42C7-B61F-DF6F558DEC2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04F4AE9B-DDC9-42C7-B61F-DF6F558DEC2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

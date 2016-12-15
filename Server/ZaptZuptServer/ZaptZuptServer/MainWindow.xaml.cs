@@ -1,17 +1,44 @@
-﻿using System;
+﻿using System.Windows;
+using System;
 using System.Text;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 
-namespace ServerZaptZupt
+namespace ZaptZuptServer
 {
-    class Program
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
     {
-        
+        public MainWindow()
+        {
+            InitializeComponent();
+        }
 
-// State object for reading client data asynchronously
-    public class StateObject
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            txtMessage.Visibility = Visibility.Hidden;
+            btnSend.Visibility = Visibility.Hidden;
+            AsynchronousSocketListener.StartListening();
+        }
+
+        private void btnExecute_Click(object sender, RoutedEventArgs e)
+        {
+            //depends on the action
+            txtMessage.Visibility = Visibility.Visible;
+            btnSend.Visibility = Visibility.Visible;
+        }
+
+        private void btnSend_Click(object sender, RoutedEventArgs e)
+        {
+            txtMessage.Visibility = Visibility.Hidden;
+            btnSend.Visibility = Visibility.Hidden;
+        }
+
+
+        public class StateObject
         {
             // Client  socket.
             public Socket workSocket = null;
@@ -60,6 +87,8 @@ namespace ServerZaptZupt
                         allDone.Reset();
 
                         // Start an asynchronous socket to listen for connections.
+
+                        //COLOCAR NO TXTEVENTS
                         Console.WriteLine("Waiting for a connection...");
                         listener.BeginAccept(
                             new AsyncCallback(AcceptCallback),
@@ -165,15 +194,6 @@ namespace ServerZaptZupt
                     Console.WriteLine(e.ToString());
                 }
             }
-
-
-            public static int Main(String[] args)
-            {
-                StartListening();
-                return 0;
-            }
         }
-
     }
 }
-

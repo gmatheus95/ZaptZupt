@@ -1,0 +1,14 @@
+D:\Documentos\GitHub\ZaptZupt\Server\ZaptZuptServer\ZaptZuptServer\bin\Debug\ZaptZuptServer.exe.config
+D:\Documentos\GitHub\ZaptZupt\Server\ZaptZuptServer\ZaptZuptServer\bin\Debug\ZaptZuptServer.exe
+D:\Documentos\GitHub\ZaptZupt\Server\ZaptZuptServer\ZaptZuptServer\bin\Debug\ZaptZuptServer.pdb
+D:\Documentos\GitHub\ZaptZupt\Server\ZaptZuptServer\ZaptZuptServer\obj\Debug\ZaptZuptServer.csprojResolveAssemblyReference.cache
+D:\Documentos\GitHub\ZaptZupt\Server\ZaptZuptServer\ZaptZuptServer\obj\Debug\MainWindow.g.cs
+D:\Documentos\GitHub\ZaptZupt\Server\ZaptZuptServer\ZaptZuptServer\obj\Debug\App.g.cs
+D:\Documentos\GitHub\ZaptZupt\Server\ZaptZuptServer\ZaptZuptServer\obj\Debug\ZaptZuptServer_MarkupCompile.cache
+D:\Documentos\GitHub\ZaptZupt\Server\ZaptZuptServer\ZaptZuptServer\obj\Debug\ZaptZuptServer_MarkupCompile.lref
+D:\Documentos\GitHub\ZaptZupt\Server\ZaptZuptServer\ZaptZuptServer\obj\Debug\MainWindow.baml
+D:\Documentos\GitHub\ZaptZupt\Server\ZaptZuptServer\ZaptZuptServer\obj\Debug\ZaptZuptServer.g.resources
+D:\Documentos\GitHub\ZaptZupt\Server\ZaptZuptServer\ZaptZuptServer\obj\Debug\ZaptZuptServer.Properties.Resources.resources
+D:\Documentos\GitHub\ZaptZupt\Server\ZaptZuptServer\ZaptZuptServer\obj\Debug\ZaptZuptServer.csproj.GenerateResource.Cache
+D:\Documentos\GitHub\ZaptZupt\Server\ZaptZuptServer\ZaptZuptServer\obj\Debug\ZaptZuptServer.exe
+D:\Documentos\GitHub\ZaptZupt\Server\ZaptZuptServer\ZaptZuptServer\obj\Debug\ZaptZuptServer.pdb

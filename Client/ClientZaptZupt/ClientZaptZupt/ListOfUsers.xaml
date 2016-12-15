@@ -14,7 +14,7 @@
             <ListBoxItem BorderThickness="3" BorderBrush ="DarkBlue" Content="User4"/>
         </ListBox>
         <Label x:Name="lblWelcome" Content="Welcome user! Choose someone to talk!" Foreground="White" FontSize="20" HorizontalAlignment="Left" Margin="30,13,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnStartTalking" Content="Talk!" FontSize="16" HorizontalAlignment="Left" Margin="30,304,0,0" VerticalAlignment="Top" Width="85"/>
+        <Button x:Name="btnStartTalking" Content="Talk" FontSize="16" HorizontalAlignment="Left" Margin="30,304,0,0" VerticalAlignment="Top" Width="85"/>
         <Button x:Name="btnLogout" Content="Logout" FontSize="16" HorizontalAlignment="Left" Margin="308,304,0,0" VerticalAlignment="Top" Width="84"/>
         <Button x:Name="btnChangeNickname" Content="Change Nickname" FontSize="16" HorizontalAlignment="Left" Margin="140,304,0,0" VerticalAlignment="Top" Width="141" RenderTransformOrigin="0.4,0.481"/>
     </Grid>
