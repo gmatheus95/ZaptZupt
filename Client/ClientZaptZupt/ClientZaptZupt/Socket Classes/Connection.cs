@@ -1,45 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using System.Windows;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 
 namespace ClientZaptZupt
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
-
-       
-        private void Grid_Loaded(object sender, RoutedEventArgs e)
-        {
-            AsynchronousClient.StartClient();
-
-        }
-
-        private void Window_Closed(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnListOfFriends_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Lista de amiguinhos!");
-        }
-
-        private void btnLogout_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Sai fora!");
-        }
-    }
-
+   
     public class StateObject
     {
         // Client socket.
@@ -54,6 +23,8 @@ namespace ClientZaptZupt
 
     public class AsynchronousClient
     {
+        private static Socket client;
+
         // The port number for the remote device.
         private const int port = 11000;
 
@@ -81,7 +52,7 @@ namespace ClientZaptZupt
                 IPEndPoint remoteEP = new IPEndPoint(ipAddress, port);
 
                 // Create a TCP/IP socket.
-                Socket client = new Socket(AddressFamily.InterNetwork,
+                client = new Socket(AddressFamily.InterNetwork,
                     SocketType.Stream, ProtocolType.Tcp);
 
                 // Connect to the remote endpoint.
@@ -90,25 +61,55 @@ namespace ClientZaptZupt
                 connectDone.WaitOne();
 
                 // Send test data to the remote device.
-                Send(client, "This is a test<EOF>");
-                sendDone.WaitOne();
+                //Send(client, "This is a test<EOF>");
+                //sendDone.WaitOne();
 
                 // Receive the response from the remote device.
-                Receive(client);
-                receiveDone.WaitOne();
+                //Receive(client);
+                //receiveDone.WaitOne();
 
                 // Write the response to the console.
-                Console.WriteLine("Response received : {0}", response);
+                //Console.WriteLine("Response received : {0}", response);
 
                 // Release the socket.
-                client.Shutdown(SocketShutdown.Both);
-                client.Close();
+                //client.Shutdown(SocketShutdown.Both);
+                //client.Close();
 
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
             }
+        }
+
+        /// <summary>
+        /// Close the connection.
+        /// </summary>
+        public static void ShutdownClient()
+        {
+            client.Shutdown(SocketShutdown.Both);
+            client.Close();
+        }
+
+        /// <summary>
+        /// Send a message to the host.
+        /// </summary>
+        /// <param name="Message">The message to be sent.</param>
+        public static void SendMessage(string Message)
+        {
+            Send(client, Message);
+            sendDone.WaitOne();
+        }
+
+        /// <summary>
+        /// Receive a message from the host.
+        /// </summary>
+        /// <returns>The sent message.</returns>
+        public static string ReceiveMessage()
+        {
+            Receive(client);
+            receiveDone.WaitOne();
+            return response;
         }
 
         private static void ConnectCallback(IAsyncResult ar)
@@ -219,6 +220,4 @@ namespace ClientZaptZupt
             }
         }
     }
-
 }
-

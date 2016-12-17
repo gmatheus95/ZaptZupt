@@ -1,0 +1,11 @@
+D:\Documentos\GitHub\ZaptZupt\Server\ServerZaptZupt\ServerZaptZupt\bin\Debug\ServerZaptZupt.exe.config
+D:\Documentos\GitHub\ZaptZupt\Server\ServerZaptZupt\ServerZaptZupt\bin\Debug\ServerZaptZupt.exe
+D:\Documentos\GitHub\ZaptZupt\Server\ServerZaptZupt\ServerZaptZupt\bin\Debug\ServerZaptZupt.pdb
+D:\Documentos\GitHub\ZaptZupt\Server\ServerZaptZupt\ServerZaptZupt\obj\Debug\ServerZaptZupt.exe
+D:\Documentos\GitHub\ZaptZupt\Server\ServerZaptZupt\ServerZaptZupt\obj\Debug\ServerZaptZupt.pdb
+C:\Users\Guilherme\Desktop\ServerZaptZupt\ServerZaptZupt\bin\Debug\ServerZaptZupt.exe.config
+C:\Users\Guilherme\Desktop\ServerZaptZupt\ServerZaptZupt\obj\Debug\ServerZaptZupt.exe
+C:\Users\Guilherme\Desktop\ServerZaptZupt\ServerZaptZupt\obj\Debug\ServerZaptZupt.pdb
+D:\Documentos\GitHub\ZaptZupt\Server\ServerZaptZuptConsole\ServerZaptZupt\bin\Debug\ServerZaptZupt.exe.config
+D:\Documentos\GitHub\ZaptZupt\Server\ServerZaptZuptConsole\ServerZaptZupt\obj\Debug\ServerZaptZupt.exe
+D:\Documentos\GitHub\ZaptZupt\Server\ServerZaptZuptConsole\ServerZaptZupt\obj\Debug\ServerZaptZupt.pdb

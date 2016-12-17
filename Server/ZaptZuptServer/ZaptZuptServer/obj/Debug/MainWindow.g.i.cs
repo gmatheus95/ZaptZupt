@@ -41,63 +41,7 @@ namespace ZaptZuptServer {
     public partial class MainWindow : System.Windows.Window, System.Windows.Markup.IComponentConnector {
         
         
-        #line 11 "..\..\MainWindow.xaml"
-        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.ComboBox comboBox;
-        
-        #line default
-        #line hidden
-        
-        
-        #line 15 "..\..\MainWindow.xaml"
-        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Label lblUser;
-        
-        #line default
-        #line hidden
-        
-        
-        #line 16 "..\..\MainWindow.xaml"
-        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.ComboBox comboBox_Copy;
-        
-        #line default
-        #line hidden
-        
-        
-        #line 20 "..\..\MainWindow.xaml"
-        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Label lblAction;
-        
-        #line default
-        #line hidden
-        
-        
-        #line 21 "..\..\MainWindow.xaml"
-        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Button btnExecute;
-        
-        #line default
-        #line hidden
-        
-        
-        #line 22 "..\..\MainWindow.xaml"
-        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.TextBox txtMessage;
-        
-        #line default
-        #line hidden
-        
-        
-        #line 23 "..\..\MainWindow.xaml"
-        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Button btnSend;
-        
-        #line default
-        #line hidden
-        
-        
-        #line 24 "..\..\MainWindow.xaml"
+        #line 10 "..\..\MainWindow.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.TextBox txtEvents;
         
@@ -143,39 +87,6 @@ namespace ZaptZuptServer {
             #line hidden
             return;
             case 2:
-            this.comboBox = ((System.Windows.Controls.ComboBox)(target));
-            return;
-            case 3:
-            this.lblUser = ((System.Windows.Controls.Label)(target));
-            return;
-            case 4:
-            this.comboBox_Copy = ((System.Windows.Controls.ComboBox)(target));
-            return;
-            case 5:
-            this.lblAction = ((System.Windows.Controls.Label)(target));
-            return;
-            case 6:
-            this.btnExecute = ((System.Windows.Controls.Button)(target));
-            
-            #line 21 "..\..\MainWindow.xaml"
-            this.btnExecute.Click += new System.Windows.RoutedEventHandler(this.btnExecute_Click);
-            
-            #line default
-            #line hidden
-            return;
-            case 7:
-            this.txtMessage = ((System.Windows.Controls.TextBox)(target));
-            return;
-            case 8:
-            this.btnSend = ((System.Windows.Controls.Button)(target));
-            
-            #line 23 "..\..\MainWindow.xaml"
-            this.btnSend.Click += new System.Windows.RoutedEventHandler(this.btnSend_Click);
-            
-            #line default
-            #line hidden
-            return;
-            case 9:
             this.txtEvents = ((System.Windows.Controls.TextBox)(target));
             return;
             }
