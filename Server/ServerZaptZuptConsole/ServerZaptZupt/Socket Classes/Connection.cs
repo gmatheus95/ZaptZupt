@@ -3,23 +3,29 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.Collections;
 
 namespace ServerZaptZupt
 {
-        public class StateObject
-        {
-            // Client  socket.
-            public Socket workSocket = null;
-            // Size of receive buffer.
-            public const int BufferSize = 1024;
-            // Receive buffer.
-            public byte[] buffer = new byte[BufferSize];
-            // Received data string.
-            public StringBuilder sb = new StringBuilder();
-        }
+    public class StateObject
+    {
+        // Client  socket.
+        public Socket workSocket = null;
+        // Size of receive buffer.
+        public const int BufferSize = 1024;
+        // Receive buffer.
+        public byte[] buffer = new byte[BufferSize];
+        // Received data string.
+        public StringBuilder sb = new StringBuilder();
+    }
 
+    
     public class AsynchronousSocketListener
     {
+
+        private static IList onlineUsers;
+
+
         // Thread signal.
         public static ManualResetEvent allDone = new ManualResetEvent(false);
 
@@ -124,11 +130,7 @@ namespace ServerZaptZupt
                     //the second is the sender (client)
                     //the next ones are the further parameters (depending on the function)
 
-                    Console.WriteLine("Read {0} bytes from socket. \n Data : {1}",
-                        content.Length, content);
-
                     content = HandleMessage(message);
-
 
                     //RESPOSTA PARA O CLIENTE \/ USANDO A FUNÇÃO SEND
                     // Echo the data back to the client.
@@ -176,7 +178,47 @@ namespace ServerZaptZupt
 
         private static string HandleMessage(string[] message) //MENSAGEM JA DIVIDIDA LA EM CIMA
         {
-            return ""; //RETORNA A MENSAGEM QUE DEVE SER ENVIADA DO SERVIDOR PARA O CLIENTE
+            string serverResponse = "";
+            switch (message[0])
+            {
+                case "0": //Login request   (0,login,password)
+                    Console.WriteLine("Login request from " + message[1]);
+                    //select para ver se já existe o nickname, se existir, compara senha
+                    //se não existir, cria um novo no banco de dados (insert nickname+pass)
+                    //mostrar se deu certo login
+                    //SE DEU CERTO
+                        serverResponse = "0§1§" + onlineUsers.Count.ToString();
+                        foreach (string nick in onlineUsers)
+                        {
+                            serverResponse += "§"+ nick;
+                        }
+                    //colocar a lista de usuários online no corpo de "serverResponse"
+                    //adicionar o nickname que acabou de entrar na lista de usuários online
+                    //SE NÃO DEU CERTO
+                        //mostra no console que não deu
+                        serverResponse = "0§-1";                    
+                    break;
+                case "1": //Change nick request
+                    Console.WriteLine(message[1] + " requested to change their nickname");
+                    //message[2] is the new nick
+                    break;
+                case "-1": //Logout request
+                    Console.WriteLine(message[1] + " requested to Loggout");
+                    //remover o nickname que acabou de sair da lista de usuários online
+                    break;
+                case "2":
+                    Console.WriteLine(message[1] + " wants to start a new chat with" + message[2]);
+
+                    break;
+                case "3":
+                    Console.WriteLine(message[1] + " sent the following message to " + message[2] + ":");
+                    Console.WriteLine(message[3]);
+                    break;
+
+            }
+
+            return serverResponse; //RETORNA A MENSAGEM QUE DEVE SER ENVIADA DO SERVIDOR PARA O CLIENTE
+
         }
     }
 }
