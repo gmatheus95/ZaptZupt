@@ -9,3 +9,8 @@ C:\Users\Guilherme\Desktop\ServerZaptZupt\ServerZaptZupt\obj\Debug\ServerZaptZup
 D:\Documentos\GitHub\ZaptZupt\Server\ServerZaptZuptConsole\ServerZaptZupt\bin\Debug\ServerZaptZupt.exe.config
 D:\Documentos\GitHub\ZaptZupt\Server\ServerZaptZuptConsole\ServerZaptZupt\obj\Debug\ServerZaptZupt.exe
 D:\Documentos\GitHub\ZaptZupt\Server\ServerZaptZuptConsole\ServerZaptZupt\obj\Debug\ServerZaptZupt.pdb
+D:\Documentos\GitHub\ZaptZupt\Server\ServerZaptZuptConsole\ServerZaptZupt\obj\Debug\ServerZaptZupt.csprojResolveAssemblyReference.cache
+D:\Documentos\GitHub\ZaptZupt\Server\ServerZaptZuptConsole\ServerZaptZupt\bin\Debug\Database1.mdf
+D:\Documentos\GitHub\ZaptZupt\Server\ServerZaptZuptConsole\ServerZaptZupt\bin\Debug\Database1_log.ldf
+D:\Documentos\GitHub\ZaptZupt\Server\ServerZaptZuptConsole\ServerZaptZupt\bin\Debug\ServerZaptZupt.exe
+D:\Documentos\GitHub\ZaptZupt\Server\ServerZaptZuptConsole\ServerZaptZupt\bin\Debug\ServerZaptZupt.pdb
