@@ -45,7 +45,6 @@ namespace ServerZaptZupt
             byte[] bytes = new Byte[1024];
 
             //Open the connection to the database
-            DBController.OpenConnection(); 
             
             // Establish the local endpoint for the socket.
             // The DNS name of the computer
@@ -122,7 +121,7 @@ namespace ServerZaptZupt
             if (bytesRead > 0)
             {
                 // There  might be more data, so store the data received so far.
-                state.sb.Append(Encoding.ASCII.GetString(
+                state.sb.Append(Encoding.UTF8.GetString(
                     state.buffer, 0, bytesRead));
 
                 // Check for end-of-file tag. If it is not there, read 
@@ -135,7 +134,7 @@ namespace ServerZaptZupt
 
                     //Neste momento, a mensagem foi recebida por completo do cliente pelo servidor
 
-                    string[] message = content.Split('§');
+                    string[] message = content.Substring(0,content.IndexOf("<EOF>")).Split('§');
                     //the item 0 is the action
                     //the second is the sender (client)
                     //the next ones are the further parameters (depending on the function)
@@ -157,7 +156,7 @@ namespace ServerZaptZupt
         private static void Send(Socket handler, String data)
         {
             // Convert the string data to byte data using ASCII encoding.
-            byte[] byteData = Encoding.ASCII.GetBytes(data);
+            byte[] byteData = Encoding.UTF8.GetBytes(data);
 
             // Begin sending the data to the remote device.
             handler.BeginSend(byteData, 0, byteData.Length, 0,
@@ -190,13 +189,15 @@ namespace ServerZaptZupt
             string serverResponse = "";
             int queryResult;
             SqlDataReader dr;
+            DBController dbController = new DBController();
+            dbController.OpenConnection();
             switch (message[0])
             {
                 //(0,nickname,password) OK
                 #region Login 
                 case "0": //Login request   
                     Console.WriteLine("Login request from " + message[1]);
-                    dr = DBController.ExecuteQuery(0, "*", "users", "nickname = '"+message[1]+"'", out queryResult);
+                    dr = dbController.ExecuteQuery(0, "*", "users", "nickname = '"+message[1]+"';", out queryResult);
                     if (dr.Read()) //the user exists
                     {
                         //the entered password matches the one on the database
@@ -219,7 +220,7 @@ namespace ServerZaptZupt
                     }
                     else //the user doesn't exist yet
                     {
-                        dr = DBController.ExecuteQuery(1,"nickname,password","users",message[1]+","+message[2],out queryResult);
+                        dr = dbController.ExecuteQuery(1,"nickname,password","users","'"+message[1]+"','"+message[2]+"';",out queryResult);
                         if (queryResult == 1)
                         {
                             
@@ -233,8 +234,7 @@ namespace ServerZaptZupt
                             }
                             onlineUsers.Add(message[1]);
                         }
-                    }
-                                         
+                    }                                         
                     break;
                 #endregion
 
@@ -270,16 +270,16 @@ namespace ServerZaptZupt
                     {                        
                         Console.WriteLine(message[1] + " started to talk with " + message[2]);
 
-                        dr = DBController.ExecuteQuery(0, "COUNT(nickname)", "messages", "(sender = '" + message[1] +
+                        dr = dbController.ExecuteQuery(0, "COUNT(nickname)", "messages", "(sender = '" + message[1] +
                             "' AND receiver = '" + message[2] + "') OR (sender = '" + message[2] +
-                            "' AND receiver = '" + message[1] + "')", out queryResult);
+                            "' AND receiver = '" + message[1] + "');", out queryResult);
 
                         dr.Read();
                         serverResponse = "2§"+dr[0].ToString();
 
-                        dr = DBController.ExecuteQuery(0, "*", "messages", "(sender = '" + message[1] +
+                        dr = dbController.ExecuteQuery(0, "*", "messages", "(sender = '" + message[1] +
                             "' AND receiver = '" + message[2] + "') OR (sender = '" + message[2] +
-                            "' AND receiver = '" + message[1] + "')", out queryResult);
+                            "' AND receiver = '" + message[1] + "');", out queryResult);
 
                         while (dr.Read()) //the user exists
                         {                            
@@ -307,8 +307,8 @@ namespace ServerZaptZupt
                         dictPendingMessages.Add(message[1] + "|" + message[2],aux);
                     }
 
-                    dr = DBController.ExecuteQuery(1, "sender, receiver, msg", "messages", "'" + message[1] +
-                        "','" + message[2] + "', '" + message[3] + "'",out queryResult);
+                    dr = dbController.ExecuteQuery(1, "sender, receiver, msg", "messages", "'" + message[1] +
+                        "','" + message[2] + "', '" + message[3] + "';",out queryResult);
                     
                     break;
                 #endregion
@@ -327,7 +327,8 @@ namespace ServerZaptZupt
 
             }
 
-            return serverResponse; //RETORNA A MENSAGEM QUE DEVE SER ENVIADA DO SERVIDOR PARA O CLIENTE
+            dbController.CloseConnection();
+            return serverResponse+"<EOF>"; //RETORNA A MENSAGEM QUE DEVE SER ENVIADA DO SERVIDOR PARA O CLIENTE
 
         }
     }

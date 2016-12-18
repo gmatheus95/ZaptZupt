@@ -17,7 +17,7 @@ namespace ClientZaptZupt
        
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            AsynchronousClient.StartClient();        
+            
         }
 
         private void Window_Closed(object sender, EventArgs e)

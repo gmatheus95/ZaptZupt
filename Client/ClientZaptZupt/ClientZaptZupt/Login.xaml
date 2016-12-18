@@ -5,11 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClientZaptZupt"
         mc:Ignorable="d"
-        Title="Login" Height="300" Width="300" Background="Black">
+        Title="Login - ZaptZupt" Height="300" Width="300" Background="Black" Activated="Window_Activated" Closing="Window_Closing" Loaded="Window_Loaded">
     <Grid>
-        <Label x:Name="lblRequest" Content="Enter your nickname:" Foreground="White" FontSize="20" HorizontalAlignment="Left" Margin="30,68,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtNickName" FontSize="20" HorizontalAlignment="Left" Height="35" Margin="30,110,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="234"/>
-        <Button x:Name="btnJoinServer" FontSize="18" Content="Sign-in" HorizontalAlignment="Left" Margin="110,165,0,0" VerticalAlignment="Top" Width="83" Height="37"/>
+        <Label x:Name="lblRequest" Content="Nickname:" Foreground="White" FontSize="20" HorizontalAlignment="Left" Margin="27,22,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtNickName" FontSize="20" HorizontalAlignment="Left" Height="35" Margin="27,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="234"/>
+        <Label x:Name="lblPassword" Content="Password:" Foreground="White" FontSize="20" HorizontalAlignment="Left" Margin="27,117,0,0" VerticalAlignment="Top"/>
+        <PasswordBox x:Name="txtPassword" PasswordChar="¿" FontSize="20" HorizontalAlignment="Left" Height="35" Margin="27,159,0,0" VerticalAlignment="Top" Width="234"/>
+        <Button x:Name="btnJoinServer" FontSize="18" Content="Sign-in" HorizontalAlignment="Left" Margin="102,213,0,0" VerticalAlignment="Top" Width="83" Height="37" Click="btnJoinServer_Click"/>
 
     </Grid>
 </Window>

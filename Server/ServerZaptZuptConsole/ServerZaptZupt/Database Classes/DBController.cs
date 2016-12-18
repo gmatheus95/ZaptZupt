@@ -6,22 +6,22 @@ namespace ServerZaptZupt
 
     class DBController
     {
-        static SqlConnection connection;
+        SqlConnection connection;
 
 
-        static string connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True;Connect Timeout=30";
+        string connString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Database1.mdf;Integrated Security=True;Connect Timeout=30";
 
         // Constructor
         // String connection: Server=127.0.0.1;Port=5432;Database=myDataBase;User Id=myUsername;Password=myPassword;
         public DBController() { }
 
-        public static void OpenConnection()
+        public  void OpenConnection()
         {
             connection = new SqlConnection(connString);
             connection.Open();
         }
 
-        public static void CloseConnection()
+        public  void CloseConnection()
         {
             connection.Close();
         }
@@ -37,7 +37,7 @@ namespace ServerZaptZupt
             /// <param name="conditions">Select: conditions ||| Insert: values to be inserted ||| Update: conditions</param>
             /// <param name="result">Output variable: number of rows affected by Insert/Update, -1 otherwise</param>
             /// <returns></returns>
-        public static SqlDataReader ExecuteQuery(int operation, string fields, string tables, string conditions, out int result)
+        public  SqlDataReader ExecuteQuery(int operation, string fields, string tables, string conditions, out int result)
         {
             string commandString = null;
 
@@ -75,7 +75,7 @@ namespace ServerZaptZupt
         }
 
         //Get all Messages registers
-        public static void GetAllMessages()
+        public  void GetAllMessages()
         {
             SqlConnection connection = new SqlConnection(connString);
             connection.Open();
