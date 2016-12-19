@@ -17,5 +17,6 @@ namespace ClientZaptZupt
     public partial class App : Application
     {
         public static string[] messageBetweenScreens;
+        public static string whoAmI;
     }
 }

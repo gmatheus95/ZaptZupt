@@ -1,0 +1,7 @@
+D:\Documentos\GitHub\ZaptZupt\Server\ServerZaptZuptConsole\ServerZaptZupt\bin\Release\ServerZaptZupt.exe.config
+D:\Documentos\GitHub\ZaptZupt\Server\ServerZaptZuptConsole\ServerZaptZupt\bin\Release\Database1.mdf
+D:\Documentos\GitHub\ZaptZupt\Server\ServerZaptZuptConsole\ServerZaptZupt\bin\Release\Database1_log.ldf
+D:\Documentos\GitHub\ZaptZupt\Server\ServerZaptZuptConsole\ServerZaptZupt\bin\Release\ServerZaptZupt.exe
+D:\Documentos\GitHub\ZaptZupt\Server\ServerZaptZuptConsole\ServerZaptZupt\bin\Release\ServerZaptZupt.pdb
+D:\Documentos\GitHub\ZaptZupt\Server\ServerZaptZuptConsole\ServerZaptZupt\obj\Release\ServerZaptZupt.exe
+D:\Documentos\GitHub\ZaptZupt\Server\ServerZaptZuptConsole\ServerZaptZupt\obj\Release\ServerZaptZupt.pdb

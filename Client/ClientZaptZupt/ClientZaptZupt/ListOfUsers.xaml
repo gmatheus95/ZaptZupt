@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ClientZaptZupt"
         mc:Ignorable="d"
-        Title="Users Online" Height="380" Width="431.86" Background="Black">
+        Title="Users Online" Height="380" Width="431.86" Background="Black" Loaded="Window_Loaded" Closing="Window_Closing">
     <Grid Margin="0,0,2,0">
         <ListBox x:Name="ltbTalk" FontSize="16" Foreground="White" Background="Black" Margin="30,50,30,60">
             <ListBoxItem BorderThickness="3" BorderBrush ="DarkBlue" Content="User1"/>
@@ -15,7 +15,7 @@
         </ListBox>
         <Label x:Name="lblWelcome" Content="Welcome user! Choose someone to talk!" Foreground="White" FontSize="20" HorizontalAlignment="Left" Margin="30,13,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnStartTalking" Content="Talk" FontSize="16" HorizontalAlignment="Left" Margin="30,304,0,0" VerticalAlignment="Top" Width="85"/>
-        <Button x:Name="btnLogout" Content="Logout" FontSize="16" HorizontalAlignment="Left" Margin="308,304,0,0" VerticalAlignment="Top" Width="84"/>
-        <Button x:Name="btnChangeNickname" Content="Change Nickname" FontSize="16" HorizontalAlignment="Left" Margin="140,304,0,0" VerticalAlignment="Top" Width="141" RenderTransformOrigin="0.4,0.481"/>
+        <Button x:Name="btnLogout" Content="Logout" FontSize="16" HorizontalAlignment="Left" Margin="308,304,0,0" VerticalAlignment="Top" Width="84" Click="btnLogout_Click"/>
+        <Button x:Name="btnUpdate" Content="Update List" FontSize="16" HorizontalAlignment="Left" Margin="140,304,0,0" VerticalAlignment="Top" Width="141" RenderTransformOrigin="0.4,0.481" Click="btnUpdate_Click"/>
     </Grid>
 </Window>

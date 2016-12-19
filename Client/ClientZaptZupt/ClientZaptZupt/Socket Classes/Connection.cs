@@ -47,7 +47,7 @@ namespace ClientZaptZupt
                 // Establish the remote endpoint for the socket.
                 // The name of the 
                 // remote device is "host.contoso.com".
-                IPHostEntry ipHostInfo = Dns.Resolve("GUILHERME-GB");
+                IPHostEntry ipHostInfo = Dns.Resolve(Dns.GetHostName());
                 IPAddress ipAddress = ipHostInfo.AddressList[0];
                 IPEndPoint remoteEP = new IPEndPoint(ipAddress, port);
 
@@ -106,9 +106,10 @@ namespace ClientZaptZupt
         /// </summary>
         /// <returns>The sent message.</returns>
         public static string ReceiveMessage()
-        {
+        {            
             Receive(client);
             receiveDone.WaitOne();
+            receiveDone.Reset();
             return response.Substring(0,response.IndexOf("<EOF>"));
         }
 
@@ -156,6 +157,7 @@ namespace ClientZaptZupt
         {
             try
             {
+                String content = String.Empty;
                 // Retrieve the state object and the client socket 
                 // from the asynchronous state object.
                 StateObject state = (StateObject)ar.AsyncState;
@@ -168,21 +170,22 @@ namespace ClientZaptZupt
                 {
                     // There might be more data, so store the data received so far.
                     state.sb.Append(Encoding.UTF8.GetString(state.buffer, 0, bytesRead));
-
-                    // Get the rest of the data.
-                    client.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0,
-                        new AsyncCallback(ReceiveCallback), state);
-                }
-                else
-                {
-                    // All the data has arrived; put it in response.
-                    if (state.sb.Length > 1)
+                    content = state.sb.ToString();
+                    if (content.IndexOf("<EOF>") > -1)
                     {
-                        response = state.sb.ToString();
+                        response = content;
+                        receiveDone.Set();
+                        state = new StateObject();
+                        state.workSocket = client;
+                        content = String.Empty;
                     }
-                    // Signal that all bytes have been received.
-                    receiveDone.Set();
-                }
+                    else
+                    {
+                        // Get the rest of the data.
+                        client.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0,
+                        new AsyncCallback(ReceiveCallback), state);
+                    }
+                }                
             }
             catch (Exception e)
             {
@@ -209,6 +212,7 @@ namespace ClientZaptZupt
 
                 // Complete sending the data to the remote device.
                 int bytesSent = client.EndSend(ar);
+                System.Threading.Thread.Sleep(200);
                 Console.WriteLine("Sent {0} bytes to server.", bytesSent);
 
                 // Signal that all bytes have been sent.

@@ -17,8 +17,9 @@ namespace ClientZaptZupt
         {
             AsynchronousClient.SendMessage("0§" + txtNickName.Text + "§" + txtPassword.Password+"<EOF>");
             string[] receivedMessage = AsynchronousClient.ReceiveMessage().Split('§');
-            AsynchronousClient.SendMessage("0§" + "alexandre" + "§" + "1111"+ "<EOF>");
-            receivedMessage = AsynchronousClient.ReceiveMessage().Split('§');
+
+            //AsynchronousClient.SendMessage("0§" + "alexandre" + "§" + "1111"+ "<EOF>");
+            //receivedMessage = AsynchronousClient.ReceiveMessage().Split('§');
             if (receivedMessage[0] == "0")
             {
                 switch (receivedMessage[1])
@@ -30,10 +31,11 @@ namespace ClientZaptZupt
                         txtNickName.Focus();                        
                         break;
                     case "1":
+                        App.whoAmI = txtNickName.Text;
                         App.messageBetweenScreens = receivedMessage;
                         ListOfUsers newWindow = new ListOfUsers();
                         newWindow.Show();
-                        Close();
+                        this.Visibility = Visibility.Hidden;
                         break;
                 }
             }
@@ -47,6 +49,7 @@ namespace ClientZaptZupt
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             AsynchronousClient.ShutdownClient();
+            App.Current.Shutdown();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -54,6 +57,7 @@ namespace ClientZaptZupt
             try
             {
                 AsynchronousClient.StartClient();
+                
             }
             catch
             {

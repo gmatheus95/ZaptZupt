@@ -143,6 +143,14 @@ namespace ServerZaptZupt
 
                     // Echo the data back to the client.
                     Send(handler, content);
+
+                    state = new StateObject();
+                    state.workSocket = handler;
+                    content = String.Empty;
+
+                    handler.BeginReceive(state.buffer, 0, StateObject.BufferSize, 0,
+                    new AsyncCallback(ReadCallback), state);
+
                 }
                 else
                 {
@@ -169,13 +177,14 @@ namespace ServerZaptZupt
             {
                 // Retrieve the socket from the state object.
                 Socket handler = (Socket)ar.AsyncState;
-
+                
                 // Complete sending the data to the remote device.
                 int bytesSent = handler.EndSend(ar);
                 Console.WriteLine("Sent {0} bytes to client.", bytesSent);
-
-                handler.Shutdown(SocketShutdown.Both);
-                handler.Close();
+                  
+                
+                //handler.Shutdown(SocketShutdown.Send);
+                //handler.Close();
 
             }
             catch (Exception e)
@@ -190,19 +199,25 @@ namespace ServerZaptZupt
             int queryResult;
             SqlDataReader dr;
             DBController dbController = new DBController();
-            dbController.OpenConnection();
             switch (message[0])
             {
-                //(0,nickname,password) OK
+                //(-2§0) OK
+                #region Ping
+                case "-2": //Ping   
+                    serverResponse = "-2§0";
+                    break;
+                #endregion
+
                 #region Login 
                 case "0": //Login request   
                     Console.WriteLine("Login request from " + message[1]);
-                    dr = dbController.ExecuteQuery(0, "*", "users", "nickname = '"+message[1]+"';", out queryResult);
+                    dr = dbController.ExecuteQuery("SELECT * FROM users WHERE nickname = '" + message[1] + "'");
                     if (dr.Read()) //the user exists
                     {
                         //the entered password matches the one on the database
                         if (dr[1].ToString() == message[2])
                         {
+                            onlineUsers.Add(message[1]);
                             Console.WriteLine("User " + message[1] + " is online!");
                             //passing the online users through the response
                             serverResponse = "0§1§" + onlineUsers.Count.ToString();
@@ -210,7 +225,6 @@ namespace ServerZaptZupt
                             {
                                 serverResponse += "§" + nick;
                             }
-                            onlineUsers.Add(message[1]);
                         }
                         else //incorrect password
                         {
@@ -220,10 +234,9 @@ namespace ServerZaptZupt
                     }
                     else //the user doesn't exist yet
                     {
-                        dr = dbController.ExecuteQuery(1,"nickname,password","users","'"+message[1]+"','"+message[2]+"';",out queryResult);
+                        queryResult = dbController.ExecuteNonQuery("INSERT INTO users(nickname,password) VALUES ('" + message[1] + "','" + message[2] + "')");
                         if (queryResult == 1)
-                        {
-                            
+                        {                           
                             Console.WriteLine("User " + message[1] + " was successfully created");
                             Console.WriteLine("User " + message[1] + " is online!");
                             //passing the online users through the response
@@ -270,17 +283,19 @@ namespace ServerZaptZupt
                     {                        
                         Console.WriteLine(message[1] + " started to talk with " + message[2]);
 
-                        dr = dbController.ExecuteQuery(0, "COUNT(nickname)", "messages", "(sender = '" + message[1] +
+                        dr = dbController.ExecuteQuery("SELECT COUNT(nickname) FROM messages WHERE (sender = '" + message[1] +
                             "' AND receiver = '" + message[2] + "') OR (sender = '" + message[2] +
-                            "' AND receiver = '" + message[1] + "');", out queryResult);
+                            "' AND receiver = '" + message[1] + "');");
+
 
                         dr.Read();
+
                         serverResponse = "2§"+dr[0].ToString();
-
-                        dr = dbController.ExecuteQuery(0, "*", "messages", "(sender = '" + message[1] +
+                        
+                        dr = dbController.ExecuteQuery("SELECT * FROM messages WHERE (sender = '" + message[1] +
                             "' AND receiver = '" + message[2] + "') OR (sender = '" + message[2] +
-                            "' AND receiver = '" + message[1] + "');", out queryResult);
-
+                            "' AND receiver = '" + message[1] + "');");
+                        
                         while (dr.Read()) //the user exists
                         {                            
                                               // sender | message | timestamp
@@ -307,9 +322,9 @@ namespace ServerZaptZupt
                         dictPendingMessages.Add(message[1] + "|" + message[2],aux);
                     }
 
-                    dr = dbController.ExecuteQuery(1, "sender, receiver, msg", "messages", "'" + message[1] +
-                        "','" + message[2] + "', '" + message[3] + "';",out queryResult);
-                    
+                    queryResult = dbController.ExecuteNonQuery("INSERT INTO messages(sender,receiver,msg) VALUES ('" +
+                        message[1] + "','" + message[2] + "', '" + message[3] + "'");
+
                     break;
                 #endregion
 
@@ -317,17 +332,27 @@ namespace ServerZaptZupt
                 //Check pending messages (4,nickname,friend_nickname)
                 case "4":
                     //response: (4,message|message|...)
-                    serverResponse = "4§";
+                    serverResponse = "4";
                     foreach (string msg in dictPendingMessages[message[1]+"|"+message[2]])
                     {
-                        serverResponse += msg + "|";
+                        serverResponse += "§"+msg;
                     }
                     break;
-               #endregion
+                #endregion
+
+                //(5,nickname)
+                #region CheckNewUsersOnline
+                case "5":
+                    serverResponse = "5§"+onlineUsers.Count.ToString();
+                    foreach (string user in onlineUsers)
+                    {
+                        serverResponse += "§"+ user;
+                    }
+                    break;
+                    #endregion
 
             }
-
-            dbController.CloseConnection();
+            
             return serverResponse+"<EOF>"; //RETORNA A MENSAGEM QUE DEVE SER ENVIADA DO SERVIDOR PARA O CLIENTE
 
         }
