@@ -31,7 +31,6 @@
         <Button x:Name="btnSend" FontSize="14" Content="Send" HorizontalAlignment="Left" Margin="520,385,0,0" VerticalAlignment="Top" Width="75" Height="30" Click="btnSend_Click"/>
         <Button x:Name="btnListOfFriends" FontSize="14" Content="Back to the list" HorizontalAlignment="Left" Margin="294,37,0,0" VerticalAlignment="Top" Width="111" Height="30" Click="btnListOfFriends_Click"/>
         <Button x:Name="btnLogout2" FontSize="14" Content="Logout" HorizontalAlignment="Left" Margin="520,37,0,0" VerticalAlignment="Top" Width="76" Height="30" Click="btnLogout_Click"/>
-        <Label x:Name="lblNotification" FontSize="14" Foreground="Red" Content="You received a message from Alexandre..." HorizontalAlignment="Center" Margin="30,420,0,0" VerticalAlignment="Top"/>
             <Button x:Name="btnRefresh" FontSize="14" Content="Refresh" HorizontalAlignment="Left" Margin="425,37,0,0" VerticalAlignment="Top" Width="76" Height="30" Click="btnRefresh_Click"/>
         </Grid>
     </Grid>
