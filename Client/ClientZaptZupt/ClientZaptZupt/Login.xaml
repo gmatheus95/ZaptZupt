@@ -10,7 +10,7 @@
         <Label x:Name="lblRequest" Content="Nickname:" Foreground="White" FontSize="20" HorizontalAlignment="Left" Margin="27,22,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtNickName" FontSize="20" HorizontalAlignment="Left" Height="35" Margin="27,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="234"/>
         <Label x:Name="lblPassword" Content="Password:" Foreground="White" FontSize="20" HorizontalAlignment="Left" Margin="27,117,0,0" VerticalAlignment="Top"/>
-        <PasswordBox x:Name="txtPassword" PasswordChar="¿" FontSize="20" HorizontalAlignment="Left" Height="35" Margin="27,159,0,0" VerticalAlignment="Top" Width="234"/>
+        <PasswordBox x:Name="txtPassword" PasswordChar="¿" FontSize="20" HorizontalAlignment="Left" Height="35" Margin="27,159,0,0" VerticalAlignment="Top" Width="234" TouchEnter="txtPassword_TouchEnter"/>
         <Button x:Name="btnJoinServer" FontSize="18" Content="Sign-in" HorizontalAlignment="Left" Margin="102,213,0,0" VerticalAlignment="Top" Width="83" Height="37" Click="btnJoinServer_Click"/>
 
     </Grid>

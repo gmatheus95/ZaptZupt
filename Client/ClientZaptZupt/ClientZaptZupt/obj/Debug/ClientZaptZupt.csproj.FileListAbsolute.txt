@@ -16,3 +16,5 @@ D:\Documentos\GitHub\ZaptZupt\Client\ClientZaptZupt\ClientZaptZupt\obj\Debug\Cli
 D:\Documentos\GitHub\ZaptZupt\Client\ClientZaptZupt\ClientZaptZupt\obj\Debug\ClientZaptZupt.pdb
 D:\Documentos\GitHub\ZaptZupt\Client\ClientZaptZupt\ClientZaptZupt\bin\Debug\ClientZaptZupt.pdb
 D:\Documentos\GitHub\ZaptZupt\Client\ClientZaptZupt\ClientZaptZupt\obj\Debug\ClientZaptZupt.csprojResolveAssemblyReference.cache
+D:\Documentos\GitHub\ZaptZupt\Client\ClientZaptZupt\ClientZaptZupt\obj\Debug\MainProgram.g.cs
+D:\Documentos\GitHub\ZaptZupt\Client\ClientZaptZupt\ClientZaptZupt\obj\Debug\MainProgram.baml

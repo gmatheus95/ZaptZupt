@@ -16,3 +16,5 @@ D:\Documentos\GitHub\ZaptZupt\Client\ClientZaptZupt\ClientZaptZupt\obj\Release\c
 D:\Documentos\GitHub\ZaptZupt\Client\ClientZaptZupt\ClientZaptZupt\obj\Release\ListOfUsers.baml
 D:\Documentos\GitHub\ZaptZupt\Client\ClientZaptZupt\ClientZaptZupt\obj\Release\Login.baml
 D:\Documentos\GitHub\ZaptZupt\Client\ClientZaptZupt\ClientZaptZupt\obj\Release\chatWindow.baml
+D:\Documentos\GitHub\ZaptZupt\Client\ClientZaptZupt\ClientZaptZupt\obj\Release\MainProgram.g.cs
+D:\Documentos\GitHub\ZaptZupt\Client\ClientZaptZupt\ClientZaptZupt\obj\Release\MainProgram.baml

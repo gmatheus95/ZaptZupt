@@ -1,0 +1,38 @@
+﻿<Window x:Class="ClientZaptZupt.MainProgram"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientZaptZupt"
+        mc:Ignorable="d"
+        Title="Users Online" Height="480" Width="640" Background="Black" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Grid>
+        <Grid x:Name="g_ListOfUsers" Margin="0,0,2,0" Visibility="Visible">
+            <ListBox x:Name="ltbFriends" FontSize="16" Foreground="White" Background="Black" Margin="30,50,30,60">
+            <ListBoxItem BorderThickness="3" BorderBrush ="DarkBlue" Content="User1"/>
+            <ListBoxItem BorderThickness="3" BorderBrush ="DarkBlue" Content="User2"/>
+            <ListBoxItem BorderThickness="3" BorderBrush ="DarkBlue" Content="User3"/>
+            <ListBoxItem BorderThickness="3" BorderBrush ="DarkBlue" Content="User4"/>
+        </ListBox>
+        <Label x:Name="lblWelcome" Content="Welcome user! Choose someone to talk!" Foreground="White" FontSize="20" HorizontalAlignment="Left" Margin="30,13,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnStartTalking" Content="Talk" FontSize="16" HorizontalAlignment="Left" Margin="31,405,0,0" VerticalAlignment="Top" Width="85" Click="LoU_btnStartTalking_Click"/>
+        <Button x:Name="btnLogout" Content="Logout" FontSize="16" HorizontalAlignment="Left" Margin="309,405,0,0" VerticalAlignment="Top" Width="84" Click="btnLogout_Click"/>
+        <Button x:Name="btnUpdate" Content="Update List" FontSize="16" HorizontalAlignment="Left" Margin="141,405,0,0" VerticalAlignment="Top" Width="141" RenderTransformOrigin="0.4,0.481" Click="LoU_btnUpdate_Click"/>
+    </Grid>
+    <Grid x:Name="g_ChatWindow" Visibility="Hidden" >
+        <ListBox x:Name="ltbTalk" BorderThickness="0" FontSize="20" Foreground="White" Background="#202020" Margin="30,80,30,100" MouseWheel="ltbTalk_MouseWheel">
+            <ListBoxItem HorizontalAlignment="Right" Background ="DarkBlue" Content= "Eu acho que você está falando besteira"/>
+            <ListBoxItem HorizontalAlignment="Right" Background ="DarkBlue" Content="babaca"/>
+            <ListBoxItem HorizontalAlignment="Left" Background ="DarkRed" Content="Oloco"/>
+            <ListBoxItem HorizontalAlignment="Left" Background ="DarkRed" Content="ok?"/>
+        </ListBox>
+        <Label x:Name="lblFriendName" Foreground="White" FontSize="30" Content="Igor" HorizontalAlignment="Left" Margin="30,20,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtMessageToBeSent" Text="" FontSize="16" Background="Black" Foreground="White" HorizontalAlignment="Left" Height="30" Margin="30,385,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="481"/>
+        <Button x:Name="btnSend" FontSize="14" Content="Send" HorizontalAlignment="Left" Margin="520,385,0,0" VerticalAlignment="Top" Width="75" Height="30" Click="btnSend_Click"/>
+        <Button x:Name="btnListOfFriends" FontSize="14" Content="Back to the list" HorizontalAlignment="Left" Margin="294,37,0,0" VerticalAlignment="Top" Width="111" Height="30" Click="btnListOfFriends_Click"/>
+        <Button x:Name="btnLogout2" FontSize="14" Content="Logout" HorizontalAlignment="Left" Margin="520,37,0,0" VerticalAlignment="Top" Width="76" Height="30" Click="btnLogout_Click"/>
+        <Label x:Name="lblNotification" FontSize="14" Foreground="Red" Content="You received a message from Alexandre..." HorizontalAlignment="Center" Margin="30,420,0,0" VerticalAlignment="Top"/>
+            <Button x:Name="btnRefresh" FontSize="14" Content="Refresh" HorizontalAlignment="Left" Margin="425,37,0,0" VerticalAlignment="Top" Width="76" Height="30" Click="btnRefresh_Click"/>
+        </Grid>
+    </Grid>
+</Window>

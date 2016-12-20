@@ -201,13 +201,6 @@ namespace ServerZaptZupt
             DBController dbController = new DBController();
             switch (message[0])
             {
-                //(-2§0) OK
-                #region Ping
-                case "-2": //Ping   
-                    serverResponse = "-2§0";
-                    break;
-                #endregion
-
                 #region Login 
                 case "0": //Login request   
                     Console.WriteLine("Login request from " + message[1]);
@@ -283,7 +276,7 @@ namespace ServerZaptZupt
                     {                        
                         Console.WriteLine(message[1] + " started to talk with " + message[2]);
 
-                        dr = dbController.ExecuteQuery("SELECT COUNT(nickname) FROM messages WHERE (sender = '" + message[1] +
+                        dr = dbController.ExecuteQuery("SELECT COUNT(*) FROM messages WHERE (sender = '" + message[1] +
                             "' AND receiver = '" + message[2] + "') OR (sender = '" + message[2] +
                             "' AND receiver = '" + message[1] + "');");
 
@@ -294,7 +287,7 @@ namespace ServerZaptZupt
                         
                         dr = dbController.ExecuteQuery("SELECT * FROM messages WHERE (sender = '" + message[1] +
                             "' AND receiver = '" + message[2] + "') OR (sender = '" + message[2] +
-                            "' AND receiver = '" + message[1] + "');");
+                            "' AND receiver = '" + message[1] + "') ORDER BY msgTimeStamp;");
                         
                         while (dr.Read()) //the user exists
                         {                            
@@ -323,7 +316,7 @@ namespace ServerZaptZupt
                     }
 
                     queryResult = dbController.ExecuteNonQuery("INSERT INTO messages(sender,receiver,msg) VALUES ('" +
-                        message[1] + "','" + message[2] + "', '" + message[3] + "'");
+                        message[1] + "','" + message[2] + "', '" + message[3] + "')");
 
                     break;
                 #endregion
@@ -331,7 +324,7 @@ namespace ServerZaptZupt
                 #region CheckPendingMessages
                 //Check pending messages (4,nickname,friend_nickname)
                 case "4":
-                    //response: (4,message|message|...)
+                    //response: (4§message§message§...)
                     serverResponse = "4";
                     foreach (string msg in dictPendingMessages[message[1]+"|"+message[2]])
                     {

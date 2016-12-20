@@ -13,13 +13,11 @@ namespace ClientZaptZupt
             InitializeComponent();
         }
 
-        private void btnJoinServer_Click(object sender, RoutedEventArgs e)
+        private void joinServer()
         {
-            AsynchronousClient.SendMessage("0§" + txtNickName.Text + "§" + txtPassword.Password+"<EOF>");
+            AsynchronousClient.SendMessage("0§" + txtNickName.Text + "§" + txtPassword.Password + "<EOF>");
             string[] receivedMessage = AsynchronousClient.ReceiveMessage().Split('§');
 
-            //AsynchronousClient.SendMessage("0§" + "alexandre" + "§" + "1111"+ "<EOF>");
-            //receivedMessage = AsynchronousClient.ReceiveMessage().Split('§');
             if (receivedMessage[0] == "0")
             {
                 switch (receivedMessage[1])
@@ -28,17 +26,27 @@ namespace ClientZaptZupt
                         MessageBox.Show("User already exists and the password is incorrect.");
                         txtNickName.Clear();
                         txtPassword.Clear();
-                        txtNickName.Focus();                        
+                        txtNickName.Focus();
                         break;
                     case "1":
                         App.whoAmI = txtNickName.Text;
                         App.messageBetweenScreens = receivedMessage;
-                        ListOfUsers newWindow = new ListOfUsers();
-                        newWindow.Show();
+                        MainProgram newWindow = new MainProgram();
                         this.Visibility = Visibility.Hidden;
+                        newWindow.Owner = this;
+                        newWindow.ShowDialog(); //waits until the dialog closes
+                        this.Visibility = Visibility.Visible;
+                        this.txtNickName.Text = "";
+                        this.txtPassword.Password = "";
+                        this.txtNickName.Focus();
                         break;
                 }
             }
+        }
+
+        private void btnJoinServer_Click(object sender, RoutedEventArgs e)
+        {
+            joinServer();
         }
 
         private void Window_Activated(object sender, EventArgs e)
@@ -64,6 +72,11 @@ namespace ClientZaptZupt
                 MessageBox.Show("Could not connect to the server, closing the application...");
                 this.Close();
             }
+        }
+
+        private void txtPassword_TouchEnter(object sender, System.Windows.Input.TouchEventArgs e)
+        {
+            joinServer();
         }
     }
 }
